@@ -1,0 +1,10 @@
+numpy==1.26.4 
+torch==2.3.0
+pytorch-fast-transformers==0.4.0
+pytorch-lightning==2.2.5 
+seqeval==1.2.2 
+pytest==8.2.1 
+optuna==3.6.1
+comet-ml==3.43.0 
+PyYAML==6.0.1
+spacy==2.3.9

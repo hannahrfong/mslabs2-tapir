@@ -1,0 +1,68 @@
+06-30 21:11 configs.path_configs INFO     Hyperparameters:
+06-30 21:11 configs.path_configs INFO     ACCU_GRAD -> 1
+06-30 21:11 configs.path_configs INFO     ATTENTION_HEAD -> 8
+06-30 21:11 configs.path_configs INFO     BATCH_SIZE -> 16
+06-30 21:11 configs.path_configs INFO     BIO_SCHEME -> ['atis-slot', 'snips-slot', 'multilingual', 'movie', 'chunk-conll2003', 'ner-conll2003']
+06-30 21:11 configs.path_configs INFO     CACHE_SIZE -> 5
+06-30 21:11 configs.path_configs INFO     CKPTS_PATH -> ./ckpts
+06-30 21:11 configs.path_configs INFO     CKPT_EPOCH -> 24
+06-30 21:11 configs.path_configs INFO     CKPT_PATH -> None
+06-30 21:11 configs.path_configs INFO     CKPT_VERSION -> default
+06-30 21:11 configs.path_configs INFO     CTRL_HIDDEN_SIZE -> 256
+06-30 21:11 configs.path_configs INFO     CTRL_LAYER -> 1
+06-30 21:11 configs.path_configs INFO     DATASET -> atis-slot
+06-30 21:11 configs.path_configs INFO     DATA_PATH -> defaultdict(<class 'dict'>, {'snips-slot': {'train': '/content/drive/MyDrive/tapir/data/train/train.snips_slot', 'valid': '/content/drive/MyDrive/tapir/data/valid/valid.snips_slot', 'test': '/content/drive/MyDrive/tapir/data/test/test.snips_slot'}, 'atis-slot': {'train': '/content/drive/MyDrive/tapir/data/train/train.atis_slot', 'valid': '/content/drive/MyDrive/tapir/data/valid/valid.atis_slot', 'test': '/content/drive/MyDrive/tapir/data/test/test.atis_slot'}, 'multilingual': {'train': '/content/drive/MyDrive/tapir/data/train/train.multilingual_task_oriented', 'valid': '/content/drive/MyDrive/tapir/data/valid/valid.multilingual_task_oriented', 'test': '/content/drive/MyDrive/tapir/data/test/test.multilingual_task_oriented'}, 'movie': {'train': '/content/drive/MyDrive/tapir/data/train/train.movie', 'valid': '/content/drive/MyDrive/tapir/data/valid/valid.movie', 'test': '/content/drive/MyDrive/tapir/data/test/test.movie'}, 'chunk-conll2003': {'train': '/content/drive/MyDrive/tapir/data/train/train.chunk_conll2003', 'valid': '/content/drive/MyDrive/tapir/data/valid/valid.chunk_conll2003', 'test': '/content/drive/MyDrive/tapir/data/test/test.chunk_conll2003'}, 'pos-conll2003': {'train': '/content/drive/MyDrive/tapir/data/train/train.pos_conll2003', 'valid': '/content/drive/MyDrive/tapir/data/valid/valid.pos_conll2003', 'test': '/content/drive/MyDrive/tapir/data/test/test.pos_conll2003'}, 'ner-conll2003': {'train': '/content/drive/MyDrive/tapir/data/train/train.ner_conll2003', 'valid': '/content/drive/MyDrive/tapir/data/valid/valid.ner_conll2003', 'test': '/content/drive/MyDrive/tapir/data/test/test.ner_conll2003'}, 'pos-ud-ewt': {'train': '/content/drive/MyDrive/tapir/data/train/train.ud_ewt', 'valid': '/content/drive/MyDrive/tapir/data/valid/valid.ud_ewt', 'test': '/content/drive/MyDrive/tapir/data/test/test.ud_ewt'}})
+06-30 21:11 configs.path_configs INFO     DATA_ROOT_PATH -> /content/drive/MyDrive/tapir/data/
+06-30 21:11 configs.path_configs INFO     DELAY -> 0
+06-30 21:11 configs.path_configs INFO     DEVICES -> [0]
+06-30 21:11 configs.path_configs INFO     DROPOUT -> 0.1
+06-30 21:11 configs.path_configs INFO     DROPOUT_RNN -> 0.1
+06-30 21:11 configs.path_configs INFO     FF_SIZE -> 2048
+06-30 21:11 configs.path_configs INFO     GPU -> 0
+06-30 21:11 configs.path_configs INFO     GRAD_CLIP -> -1
+06-30 21:11 configs.path_configs INFO     HIDDEN_SIZE -> 512
+06-30 21:11 configs.path_configs INFO     INCR_EVAL -> False
+06-30 21:11 configs.path_configs INFO     LAYER -> 4
+06-30 21:11 configs.path_configs INFO     LOG_OFFLINE -> False
+06-30 21:11 configs.path_configs INFO     LOG_PATH -> ./results/log
+06-30 21:11 configs.path_configs INFO     LR -> 0.001
+06-30 21:11 configs.path_configs INFO     LR_DECAY_LIST -> [50]
+06-30 21:11 configs.path_configs INFO     LR_DECAY_RATE -> 1
+06-30 21:11 configs.path_configs INFO     MAX_EPOCH -> 50
+06-30 21:11 configs.path_configs INFO     MAX_TOKEN -> 200
+06-30 21:11 configs.path_configs INFO     MODEL -> two-pass
+06-30 21:11 configs.path_configs INFO     MODEL_CONFIG -> twopass_config
+06-30 21:11 configs.path_configs INFO     NUM_WORKERS -> 4
+06-30 21:11 configs.path_configs INFO     N_GPU -> 1
+06-30 21:11 configs.path_configs INFO     OPT -> AdamW
+06-30 21:11 configs.path_configs INFO     OPT_PARAMS -> {'betas': (0.9, 0.98), 'eps': 1e-09, 'weight_decay': 0.01, 'amsgrad': False}
+06-30 21:11 configs.path_configs INFO     PATIENCE -> 10
+06-30 21:11 configs.path_configs INFO     PIN_MEM -> True
+06-30 21:11 configs.path_configs INFO     RESULT_PATH -> ./results/result_test
+06-30 21:11 configs.path_configs INFO     RESUME -> False
+06-30 21:11 configs.path_configs INFO     REVISER -> transformers
+06-30 21:11 configs.path_configs INFO     REVISER_CKPT_EPOCH -> 30
+06-30 21:11 configs.path_configs INFO     REVISER_CKPT_PATH -> None
+06-30 21:11 configs.path_configs INFO     REVISER_CKPT_VERSION -> two_pass_reviser
+06-30 21:11 configs.path_configs INFO     REV_OFFSET -> 0
+06-30 21:11 configs.path_configs INFO     REV_THRESHOLD -> 0.5
+06-30 21:11 configs.path_configs INFO     RNN_HIDDEN_SIZE -> 512
+06-30 21:11 configs.path_configs INFO     RNN_LAYER -> 1
+06-30 21:11 configs.path_configs INFO     RNN_TYPE -> LSTM
+06-30 21:11 configs.path_configs INFO     RUN_MODE -> test
+06-30 21:11 configs.path_configs INFO     SEED -> 42119392
+06-30 21:11 configs.path_configs INFO     SEQ_LABELLING -> ['atis-slot', 'snips-slot', 'multilingual', 'movie', 'chunk-conll2003', 'pos-conll2003', 'ner-conll2003', 'pos-ud-ewt']
+06-30 21:11 configs.path_configs INFO     SPD_BENCHMARK -> True
+06-30 21:11 configs.path_configs INFO     SPLIT -> {'train': 'train+valid', 'valid': 'valid', 'test': 'test'}
+06-30 21:11 configs.path_configs INFO     SPLIT_PATH -> {'train': '/content/drive/MyDrive/tapir/data/train/', 'valid': '/content/drive/MyDrive/tapir/data/valid/', 'test': '/content/drive/MyDrive/tapir/data/test/'}
+06-30 21:11 configs.path_configs INFO     TASK_TYPE -> labelling
+06-30 21:11 configs.path_configs INFO     TRAIN_SPLIT -> train+valid
+06-30 21:11 configs.path_configs INFO     UNK_PROB -> 0.02
+06-30 21:11 configs.path_configs INFO     USE_GLOVE -> True
+06-30 21:11 configs.path_configs INFO     VERSION -> default
+06-30 21:11 configs.path_configs INFO     WARMUP_EPOCH -> 5
+06-30 21:11 configs.path_configs INFO     WORD_EMBED_SIZE -> 300
+06-30 21:11 configs.path_configs INFO     
+06-30 21:11 configs.path_configs INFO     Checking the datasets...
+06-30 21:11 configs.path_configs INFO     Finished checking the datasets!
+06-30 21:18 configs.path_configs INFO     Elapsed Time: 2.1491428096973753
