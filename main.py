@@ -16,6 +16,7 @@ from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping, \
                                         LearningRateMonitor
 
 import optuna
+from optuna.integration.pytorch_lightning import PyTorchLightningPruningCallback
 
 def parse_args():
     """Parse input arguments"""
@@ -265,8 +266,8 @@ def main(cfgs):
               #gpus=cfgs.GPU,
               logger=comet_logger,
               callbacks=[LoggingCallback(cfgs_dict), checkpoint_callback,
-                        lr_monitor],
-              check_val_every_n_epoch=1,
+                        lr_monitor, PyTorchLightningPruningCallback(trial, monitor=metric)],
+              check_val_every_n_epoch=50,
               gradient_clip_val=cfgs.GRAD_CLIP,
               #resume_from_checkpoint=path,
               accumulate_grad_batches=cfgs.ACCU_GRAD
@@ -277,8 +278,10 @@ def main(cfgs):
             val_f1 = trainer.callback_metrics["val_f1"].item()
 
             return val_f1
+
+        pruner = optuna.pruners.MedianPruner() 
         
-        study = optuna.create_study(direction="maximize")
+        study = optuna.create_study(direction="maximize", pruner=pruner)
         study.optimize(objective, n_trials=25)
 
         print("Best hyperparameters: ", study.best_trial.params)
