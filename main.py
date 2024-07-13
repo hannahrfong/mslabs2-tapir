@@ -267,7 +267,7 @@ def main(cfgs):
               logger=comet_logger,
               callbacks=[LoggingCallback(cfgs_dict), checkpoint_callback,
                         lr_monitor, PyTorchLightningPruningCallback(trial, monitor=metric)],
-              check_val_every_n_epoch=50,
+              check_val_every_n_epoch=1,
               gradient_clip_val=cfgs.GRAD_CLIP,
               #resume_from_checkpoint=path,
               accumulate_grad_batches=cfgs.ACCU_GRAD
