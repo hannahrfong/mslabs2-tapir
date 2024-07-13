@@ -55,7 +55,7 @@ class ExpConfig(PATH):
 
         # Define data split
         self.SPLIT = {
-            'train': '', 'valid': 'valid', 'test': 'test'  , 'train_only': 'train' #-> only turn this on for gen_actions
+            'train': '', 'valid': 'valid', 'test': 'test'  , #'train_only': 'train' #-> only turn this on for gen_actions
         }
 
         # Define maximum sentence length
