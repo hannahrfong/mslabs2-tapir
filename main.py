@@ -280,7 +280,7 @@ def main(cfgs):
         pruner = optuna.pruners.MedianPruner() 
         
         study = optuna.create_study(direction="maximize")
-        study.optimize(objective, n_trials=10)
+        study.optimize(objective, n_trials=25)
 
         print("Best hyperparameters: ", study.best_trial.params)
 
