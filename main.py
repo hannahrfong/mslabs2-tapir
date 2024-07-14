@@ -241,36 +241,34 @@ def main(cfgs):
             )
             
         def objective(trial):
-            layers = trial.suggest_int("LAYERS", 1, 4)
-            grad_clip = trial.suggest_categorical("GRAD_CLIP", [None, 0.5, 1.0])
-            lr = trial.suggest_categorical("LR", [5e-5, 7e-5, 1e-4])
-            batch_size = trial.suggest_categorical("BATCH_SIZE", [16, 32, 64])
-            ff_dim = trial.suggest_categorical("FEED_FORWARD_DIM", [1024, 2048])
-            sa_dim = trial.suggest_categorical("SELF_ATTENTION_DIM", [256, 512])
+            cfgs.RNN_LAYER = trial.suggest_int('RNN_LAYER', 1, 4)
+            cfgs.CTRL_LAYER = trial.suggest_int('CTRL_LAYER', 1, 2)
+            cfgs.GRAD_CLIP = trial.suggest_categorical('GRAD_CLIP', [None, 0.5, 1.0])
+            cfgs.LR = trial.suggest_categorical('LR', [5e-5, 7e-5, 1e-4, 1e-3])
+            cfgs.BATCH_SIZE = trial.suggest_categorical('BATCH_SIZE', [16, 32, 64])
+            cfgs.RNN_HIDDEN_SIZE = trial.suggest_categorical('RNN_HIDDEN_SIZE', [256, 512])
+            cfgs.CTRL_HIDDEN_SIZE = trial.suggest_categorical('CTRL_HIDDEN_SIZE', [256, 512])
+            cfgs.CACHE_SIZE = trial.suggest_categorical('CACHE_SIZE', [3, 5, 7])
 
-            cfgs.LAYERS = layers
-            cfgs.GRAD_CLIP = grad_clip
-            cfgs.LR = lr
-            cfgs.BATCH_SIZE = batch_size
-            cfgs.FEED_FORWARD_DIM = ff_dim
-            cfgs.SELF_ATTENTION_DIM = sa_dim
+            model = model_dict[model_task]['train'](
+                cfgs, datamodule.tokenizer.token2idx,
+                datamodule.tokenizer.label2idx, reviser,
+                pretrained_emb
+            )
 
-            print("MAX_EPOCH: ")
-            print(cfgs.MAX_EPOCH)
-            print("PATIENCE: ")
-            print(cfgs.PATIENCE)
-            
             trainer = Trainer(
-              deterministic=False,
-              max_epochs=cfgs.MAX_EPOCH,
-              #gpus=cfgs.GPU,
-              logger=comet_logger,
-              callbacks=[LoggingCallback(cfgs_dict), checkpoint_callback,
-                        lr_monitor, PyTorchLightningPruningCallback(trial, monitor=metric)],
-              check_val_every_n_epoch=1,
-              gradient_clip_val=cfgs.GRAD_CLIP,
-              #resume_from_checkpoint=path,
-              accumulate_grad_batches=cfgs.ACCU_GRAD
+                deterministic=True,
+                max_epochs=cfgs.MAX_EPOCH,
+                #devices=cfgs.GPU,
+                devices='auto',
+                accelerator='cpu',
+                logger=comet_logger,
+                callbacks=[early_stop_callback, LoggingCallback(cfgs_dict), checkpoint_callback,
+                         lr_monitor],
+                check_val_every_n_epoch=1,
+                gradient_clip_val=cfgs.GRAD_CLIP,
+                #resume_from_checkpoint=path,
+                accumulate_grad_batches=cfgs.ACCU_GRAD
             )
 
             trainer.fit(model, datamodule=datamodule)
@@ -281,8 +279,8 @@ def main(cfgs):
 
         pruner = optuna.pruners.MedianPruner() 
         
-        study = optuna.create_study(direction="maximize", pruner=pruner)
-        study.optimize(objective, n_trials=25)
+        study = optuna.create_study(direction="maximize")
+        study.optimize(objective, n_trials=10)
 
         print("Best hyperparameters: ", study.best_trial.params)
 
